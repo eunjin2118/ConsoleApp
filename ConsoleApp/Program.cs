@@ -9,13 +9,29 @@ namespace ConsoleApp
 {
     internal class Program
     {
+        private static readonly int SnakeStateTotal = 3;
+        private const int SnakeState1 = 0;
+        private const int SnakeState2 = 1;
+        private const int SnakeState3 = 2;
+        private static readonly int SnakeMoveCount = 50;
+        private static readonly int SnakeRow = 5;
+        private static readonly int SnakeSleeptime = 1000;
         static void Main(string[] args)
         {
-            Console.Write("메서드 호출");
-            Console.SetCursorPosition(5, 5);
-            Console.Write("메서드 호출2");
-            Console.SetCursorPosition(2, 2);
-            Console.Write("메서드 호출3");
+            int x = SnakeState1;
+            while (x < SnakeMoveCount)
+            {
+                Console.Clear();
+                Console.SetCursorPosition(x, SnakeMoveCount);
+
+                // switch
+                if(x%SnakeStateTotal == SnakeState1) Console.WriteLine("__@");
+                else if(x% SnakeStateTotal == SnakeState2) Console.WriteLine("_^@");
+                else  Console.WriteLine("^_@");
+
+                Thread.Sleep(SnakeSleeptime);
+                x++;
+            }
         }
     }
 }
